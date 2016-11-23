@@ -15,7 +15,8 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
 # WANT_JSON
-# POWERSHELL_COMMON$ErrorActionPreference = "Stop"
+# POWERSHELL_COMMON
+$ErrorActionPreference = "Stop"
 $params = Parse-Args $args
 $InputVariable = Get-Attr $params "pathvalue" $FALSE
 $TargetSpace = Get-Attr $params "level" $FALSE
