@@ -59,12 +59,12 @@ $script = {
                 $expand = [System.Environment]::ExpandEnvironmentVariables($InputVariable)
                 if($myArray -eq $expand)
                 {
-                        Write-Host Already ENV available in Path
+                        #Write-Host Already ENV available in Path
                         $result.changed = $FALSE
                 }
                 else
                 {
-                        write-host Path not available in the ENV Path so Script adding it in Path variable
+                        #write-host Path not available in the ENV Path so Script adding it in Path variable
                         [Environment]::SetEnvironmentVariable("Path", "$expand;" + $Value, [EnvironmentVariableTarget]::$TargetSpace)
 	                $result.changed = $TRUE
                 }
@@ -74,7 +74,7 @@ $script = {
         # Function to Add variable to path if System/User Path is not defined
         Function addnullpath
         {
-                write-host Variable not available in the ENV Path so Script adding it in Path variable
+                #write-host Variable not available in the ENV Path so Script adding it in Path variable
                 $expand = [System.Environment]::ExpandEnvironmentVariables($InputVariable)
                 [Environment]::SetEnvironmentVariable("Path", "$expand;", [EnvironmentVariableTarget]::$TargetSpace)
                 $result.changed = $TRUE
