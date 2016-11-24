@@ -24,7 +24,7 @@
 DOCUMENTATION = '''
 ---
 module: win_addpath
-version_added: "1.0"
+version_added: "2.3"
 short_description: Append Path environment variables on windows hosts.
 description:
     - Uses .net Environment to set path environment variables and can set at User, Machine and Process level.  
@@ -36,7 +36,7 @@ options:
       - The value to store in the path environment variable.
     required: true
     default: no default
-  level:
+ level:
     description: 
       - The level at which to set the environment variable.
       - Use 'machine' to set for all users.
@@ -48,7 +48,7 @@ options:
       - machine
       - process
       - user
-author: "Syed,RajeshKumar"
+author: "Syed, RajeshKumar"
 notes: 
    - This module does not broadcast change events.  
      This means that the minority of windows applications which can have 
@@ -67,5 +67,8 @@ EXAMPLES = '''
   win_addpath:
     pathvalue: '%JAVA_HOME%/bin'
     level: user
+'''
+
+RETURN = '''
 '''
 
