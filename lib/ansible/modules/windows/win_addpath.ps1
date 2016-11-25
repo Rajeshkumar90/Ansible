@@ -64,7 +64,7 @@ $script = {
                 }
                 else
                 {
-                        #write-host Path not available in the ENV Path so Script adding it in Path variable
+                        #write-host Path is not available in the ENV Path so Script adding it in Path variable
                         [Environment]::SetEnvironmentVariable("Path", "$expand;" + $Value, [EnvironmentVariableTarget]::$TargetSpace)
 	                $result.changed = $TRUE
                 }
