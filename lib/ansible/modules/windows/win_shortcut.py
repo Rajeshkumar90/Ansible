@@ -29,12 +29,12 @@ short_description: Add Windows shortcut on windows hosts.
 description:
     - Uses .net Environment to add windows shortcut.
 options:
- target:
+ src:
     description: 
       - path for a Windows shortcut.
     required: true
     default: no default
- shorcut:
+ dest:
     description: 
       - path for a linking file with .lnk or .url.
     required: true
@@ -47,8 +47,8 @@ notes:
 EXAMPLES = '''
   # Creates shortcut for given exe
   win_shortcut:
-    target: 'C:\Program Files\Notepad++\notepad++.exe'
-    shortcut: 'C:\Users\588378\Desktop\notepad++.lnk'
+    src: 'C:\Program Files\Notepad++\notepad++.exe'
+    dest: 'C:\Users\588378\Desktop\notepad++.lnk'
 '''
 
 RETURN = '''
