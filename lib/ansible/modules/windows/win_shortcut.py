@@ -49,6 +49,7 @@ EXAMPLES = '''
   win_shortcut:
     src: 'C:\Program Files\Notepad++\notepad++.exe'
     dest: 'C:\Users\588378\Desktop\notepad++.lnk'
+
 '''
 
 RETURN = '''
