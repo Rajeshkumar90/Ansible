@@ -45,8 +45,11 @@ notes:
 '''
 
 EXAMPLES = '''
-  # Creates shortcut for given exe
+# Creates shortcut for given exe
   win_shortcut:
     src: 'C:\Program Files\Notepad++\notepad++.exe'
     dest: 'C:\Users\588378\Desktop\notepad++.lnk'
+'''
+
+RETURN = '''
 '''
