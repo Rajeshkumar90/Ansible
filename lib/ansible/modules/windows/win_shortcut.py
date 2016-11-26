@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2015, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
+# (c) 2016,Syed RajeshKumar
 #
 # This file is part of Ansible
 #
@@ -27,11 +27,11 @@ module: win_shortcut
 version_added: "2.3"
 short_description: Add Windows shortcut on windows hosts.
 description:
-    - Uses .net Environment to add windows shortcut.
+    - Uses .net Environment to add windows shortcut.  
 options:
  src:
     description: 
-      - path for a Windows shortcut.
+      - path for a Windows shortcut
     required: true
     default: no default
  dest:
@@ -50,5 +50,6 @@ EXAMPLES = '''
     src: 'C:\Program Files\Notepad++\notepad++.exe'
     dest: 'C:\Users\588378\Desktop\notepad++.lnk'
 '''
+
 RETURN = '''
 '''
