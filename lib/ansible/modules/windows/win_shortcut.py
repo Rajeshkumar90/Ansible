@@ -47,8 +47,8 @@ notes:
 EXAMPLES = '''
   # Creates shortcut for given exe
   win_shortcut:
-    src: 'C:\Program Files\Notepad++\notepad++.exe'
-    dest: 'C:\Users\588378\Desktop\notepad++.lnk'
+    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    dest: 'C:\Users\Test\Desktop\Firefox.exe'
 '''
 
 RETURN = '''
