@@ -27,7 +27,7 @@ module: win_shortcut
 version_added: "2.3"
 short_description: Adds Windows shortcut on windows hosts.
 description:
-    - Uses .net Environment to set path environment variables and can set at User, Machine and Process level.  
+    - Uses .net Environment to add windows shortcut.  
 options:
  src:
     description: 
