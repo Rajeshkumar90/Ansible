@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2015, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
+# (c) 2015, RajeshKumar SyedShabir
 #
 # This file is part of Ansible
 #
@@ -23,49 +23,36 @@
 
 DOCUMENTATION = '''
 ---
-module: win_addpath
+module: win_shortcut
 version_added: "2.3"
-short_description: Append Path environment variables on windows hosts.
+short_description: Adds windows shortcut on windows hosts.
 description:
-    - Uses .net Environment to set path environment variables and can set at User, Machine and Process level.  
-    - User level path environment variables will be set, but available until the particular session is closed.
+    - Uses .net Environment to add windows shortcut.  
 options:
- pathvalue:
+ src:
     description: 
-      - The value to store in the path environment variable.
+      - Path for windows shortcut.
     required: true
     default: no default
- level:
+ dest:
     description: 
-      - The level at which to set the environment variable.
-      - Use 'machine' to set for all users.
-      - Use 'user' to set for the current user that ansible is connected as.
-      - Use 'process' to set for the current process.  Probably not that useful.
+      - Path for linking file with .lnk or .url.
     required: true
     default: no default
-    choices:
-      - machine
-      - process
-      - user
-author: "Syed, RajeshKumar"
+author: "SyedShabir, RajeshKumar"
 notes: 
-   - This module does not broadcast change events.  
-     This means that the minority of windows applications which can have 
-     their environment changed without restarting will not be notified and 
-     therefore will need restarting to pick up new environment settings.  
-     User level environment variables will not require the user to log out 
-     and in again before they become available.
+   - This module is helpful for deploying application with windows shortcut.  
 '''
 
 EXAMPLES = '''
-  # Set an path environment variable for all users
-  win_addpath:
-    pathvalue: 'C:\Program Files\Java\bin'
-    level: machine
-  # Expand an path environment variable for the current users
-  win_addpath:
-    pathvalue: '%JAVA_HOME%/bin'
-    level: user
+  # Creates windows shortcut for lnk
+  win_shortcut:
+    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    dest: 'C:\Users\test\Desktop\Firefox.lnk'
+  # Creates windows shortcut for url
+  win_shortcut:
+    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    dest: 'C:\Users\test\Desktop\Firefox.url'
 '''
 
 RETURN = '''
