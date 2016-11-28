@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2016, Rajeshkumar Syed
+# (c) 2015, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
 #
 # This file is part of Ansible
 #
@@ -23,36 +23,49 @@
 
 DOCUMENTATION = '''
 ---
-module: win_shortcut
+module: win_addpath
 version_added: "2.3"
-short_description: Adds windows shortcut on windows hosts.
+short_description: Append Path environment variables on windows hosts.
 description:
-    - Uses .net Environment to add windows shortcut.  
+    - Uses .net Environment to set path environment variables and can set at User, Machine and Process level.  
+    - User level path environment variables will be set, but available until the particular session is closed.
 options:
- src:
+ pathvalue:
     description: 
-      - Path for a Windows shortcut.
+      - The value to store in the path environment variable.
     required: true
     default: no default
- dest:
+ level:
     description: 
-      - Path for a linking file with .lnk or .url.
+      - The level at which to set the environment variable.
+      - Use 'machine' to set for all users.
+      - Use 'user' to set for the current user that ansible is connected as.
+      - Use 'process' to set for the current process.  Probably not that useful.
     required: true
     default: no default
+    choices:
+      - machine
+      - process
+      - user
 author: "Syed, RajeshKumar"
 notes: 
-   - This module is helpful in deploying application for windows shortcut.
+   - This module does not broadcast change events.  
+     This means that the minority of windows applications which can have 
+     their environment changed without restarting will not be notified and 
+     therefore will need restarting to pick up new environment settings.  
+     User level environment variables will not require the user to log out 
+     and in again before they become available.
 '''
 
 EXAMPLES = '''
-  # Creates windows shortcut for lnk
-  win_shortcut:
-    src: 'C:\Program Files\Notepad++\notepad++.exe'
-    dest: 'C:\Users\test\Desktop\notepad++.lnk'
-  # Creates windows shortcut for url
-  win_shortcut:
-    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
-    dest: 'C:\Users\test\Desktop\Firefox.url'
+  # Set an path environment variable for all users
+  win_addpath:
+    pathvalue: 'C:\Program Files\Java\bin'
+    level: machine
+  # Expand an path environment variable for the current users
+  win_addpath:
+    pathvalue: '%JAVA_HOME%/bin'
+    level: user
 '''
 
 RETURN = '''
