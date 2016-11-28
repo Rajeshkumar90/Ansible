@@ -30,8 +30,8 @@ $TargetFile = Get-Attr $params "src" $FALSE
 If ($TargetFile -eq $FALSE)
 {
    Fail-Json (New-Object psobject) "missing required argument: src File Path"
-}
 
+}
 $ShortcutFile = Get-Attr $params "dest" $FALSE
 
 If ($ShortcutFile -eq $FALSE)
@@ -43,17 +43,23 @@ If(($TargetFile -or $ShortcutFile) -eq $null)
 {
  Fail-Json (New-Object psobject) "missing required argument: Either src or  dest File path contains Null Value"
 }
-
-if((Test-Path  $TargetFile ) -and (Test-Path $ShortcutFile))
+try
 {
-  $result.changed = $FALSE
+ if((Test-Path  $TargetFile ) -and (Test-Path $ShortcutFile))
+ {
+   $result.changed = $FALSE
+ }
+ else
+ {
+  $WScriptShell = New-Object -ComObject WScript.Shell
+  $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
+  $Shortcut.TargetPath = $TargetFile
+  $Shortcut.Save()
+  $result.changed = $TRUE
+ }
 }
-else
+catch
 {
- $WScriptShell = New-Object -ComObject WScript.Shell
- $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
- $Shortcut.TargetPath = $TargetFile
- $Shortcut.Save()
- $result.changed = $TRUE
+ Fail-Json $result $_.Exception.Message
 }
 Exit-Json $result
