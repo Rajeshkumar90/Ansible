@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2016, RajeshKumar SyesShabir
+# (c) 2016, RajeshKumar SyedShabir
 #
 # This file is part of Ansible
 #
@@ -49,10 +49,6 @@ EXAMPLES = '''
   win_shortcut:
     src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
     dest: 'C:\Users\test\Desktop\Firefox.lnk'
-  # Creates windows shortcut for url
-  win_shortcut:
-    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
-    dest: 'C:\Users\test\Desktop\Firefox.url'
 '''
 
 RETURN = '''
