@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2015, Rajeshkumar Syed
+# (c) 2016, Rajeshkumar Syed
 #
 # This file is part of Ansible
 #
@@ -25,7 +25,7 @@ DOCUMENTATION = '''
 ---
 module: win_shortcut
 version_added: "2.3"
-short_description: Adds windows shorcut on windows hosts.
+short_description: Adds windows shortcut on windows hosts.
 description:
     - Uses .net Environment to add windows shortcut.  
 options:
@@ -41,14 +41,18 @@ options:
     default: no default
 author: "Syed, RajeshKumar"
 notes: 
-   - This module does not broadcast change events.  
+   - This module is helpful in deploying application for windows shortcut.
 '''
 
 EXAMPLES = '''
-  # Create Windows shortcut for given user input
+  # Creates windows shortcut for lnk
   win_shortcut:
     src: 'C:\Program Files\Notepad++\notepad++.exe'
-    dest: 'C:\Users\588378\Desktop\notepad++.lnk'
+    dest: 'C:\Users\test\Desktop\notepad++.lnk'
+  # Creates windows shortcut for url
+  win_shortcut:
+    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    dest: 'C:\Users\test\Desktop\Firefox.url'
 '''
 
 RETURN = '''
