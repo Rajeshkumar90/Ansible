@@ -47,7 +47,7 @@ notes:
 EXAMPLES = '''
   # Creates shortcut for given exe
   win_shortcut:
-    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    src: 'C:\\Program Files\\Mozilla Firefox\\Firefox.exe'
     dest: 'C:\\users\\Test\\Desktop\\Firefox.exe'
 '''
 
