@@ -25,7 +25,7 @@ DOCUMENTATION = '''
 ---
 module: win_shortcut
 version_added: "2.3"
-short_description: Add Windows shortcut on windows hosts.
+short_description: Adds Windows shortcut on windows hosts.
 description:
     - Uses .net Environment to add windows shortcut.  
 options:
