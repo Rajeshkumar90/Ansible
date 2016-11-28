@@ -48,11 +48,11 @@ EXAMPLES = '''
   # Creates windows shortcut for lnk
   win_shortcut:
     src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
-    dest: 'C:\Program Files\Mozilla Firefox\Firefox.lnk'
+    dest: 'C:\Users\test\Desktop\Firefox.lnk'
   # Creates windows shortcut for url
   win_shortcut:
     psrc: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
-    dest: 'C:\Program Files\Mozilla Firefox\Firefox.url'
+    dest: 'C:\Users\test\Desktop\Firefox.url'
 '''
 
 RETURN = '''
