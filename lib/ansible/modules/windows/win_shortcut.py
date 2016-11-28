@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2016, RajeshKumar SyedShabir 
+# (c) 2016, RajeshKumar SyedShabir
 #
 # This file is part of Ansible
 #
@@ -27,7 +27,7 @@ module: win_shortcut
 version_added: "2.3"
 short_description: Adds windows shortcut on windows hosts.
 description:
-    - Uses .net Environment to add windows shortcut.
+    - Uses .net Environment to add windows shortcut.  
 options:
  src:
     description: 
@@ -51,8 +51,8 @@ EXAMPLES = '''
     dest: 'C:\Users\test\Desktop\Firefox.lnk'
   # Creates windows shortcut for url
   win_shortcut:
-    psrc: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
-    dest: 'C:\Users\test\Desktop\Firefox.url'
+    src: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
+    dest: 'C:\Program Files\Mozilla Firefox\Firefox.exe'
 '''
 
 RETURN = '''
