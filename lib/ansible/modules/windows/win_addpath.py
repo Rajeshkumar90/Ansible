@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2015, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
+# (c) 2016, RajeshKumar Palani SyedShabir
 #
 # This file is part of Ansible
 #
@@ -47,7 +47,7 @@ options:
       - machine
       - process
       - user
-author: "Syed, RajeshKumar"
+author: "SyedShabir, RajeshKumar Palani"
 notes: 
    - This module does not broadcast change events.  
      This means that the minority of windows applications which can have 
