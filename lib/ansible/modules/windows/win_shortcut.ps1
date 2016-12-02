@@ -18,36 +18,23 @@
 # POWERSHELL_COMMON
 
 $ErrorActionPreference = "Stop"
-
 $params = Parse-Args $args
-
+$TargetFile = Get-AnsibleParam -obj $params -name "src" -failifempty $true
+$ShortcutFile = Get-AnsibleParam -obj $params -name "dest" -failifempty $true
 $result = New-Object psobject @{
     changed = $FALSE
 }
-
-$TargetFile = Get-Attr $params "src" $FALSE
-
-If ($TargetFile -eq $FALSE)
-{
-   Fail-Json (New-Object psobject) "missing required argument: src File Path"
-
-}
-$ShortcutFile = Get-Attr $params "dest" $FALSE
-
-If ($ShortcutFile -eq $FALSE)
-{
-   Fail-Json (New-Object psobject) "missing required argument: dest File Path"
-}
-
-If(($TargetFile -or $ShortcutFile) -eq $null)
-{
- Fail-Json (New-Object psobject) "missing required argument: Either src or  dest File path contains Null Value"
-}
 try
 {
- if((Test-Path  $TargetFile ) -and (Test-Path $ShortcutFile))
+ $Scriptsh = New-Object -COM WScript.Shell
+ $targetPath = $Scriptsh.CreateShortcut($ShortcutFile).TargetPath
+ if(!(Test-Path $TargetFile))
  {
-   $result.changed = $FALSE
+  Fail-Json (New-Object psobject) "missing required argument: Provide valid Folder where exe present"
+ }
+ elseif($targetPath -eq $TargetFile)
+ {
+ $result.changed = $FALSE
  }
  else
  {
